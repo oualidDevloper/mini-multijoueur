@@ -48,6 +48,7 @@ io.on('connection', (socket) => {
             id: socket.id, // simple player ID
             name: playerName || `Joueur ${session.players.length + 1}`,
             socketId: socket.id,
+            score: 0,
             symbol: gameType === 'tictactoe' || gameType === 'connect4' ? (session.players.length === 0 ? 'X' : 'O') : null
         };
 
@@ -66,7 +67,8 @@ io.on('connection', (socket) => {
         const result = joinSession(code, {
             id: socket.id,
             name: playerName,
-            socketId: socket.id
+            socketId: socket.id,
+            score: 0
         });
 
         if (result.error) {

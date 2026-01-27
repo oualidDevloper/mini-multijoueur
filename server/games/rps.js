@@ -46,7 +46,10 @@ function resolveRound(session) {
     // Update global scores
     Object.keys(roundScores).forEach(pid => {
         const p = players.find(pl => pl.id === pid);
-        if (p) p.score += roundScores[pid];
+        if (p) {
+            if (typeof p.score !== 'number') p.score = 0;
+            p.score += roundScores[pid];
+        }
     });
 
     gameState.results = {

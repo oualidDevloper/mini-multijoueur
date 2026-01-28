@@ -108,7 +108,8 @@ io.on('connection', (socket) => {
         const session = getSession(code);
         if (!session) return;
 
-        if (session.players.length < 2) return;
+        const minPlayers = session.gameType === 'hangman' ? 1 : 2;
+        if (session.players.length < minPlayers) return;
 
         session.state = 'playing';
         io.to(session.code).emit('game_start', session);

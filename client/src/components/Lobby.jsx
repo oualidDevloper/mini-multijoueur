@@ -93,14 +93,14 @@ export default function Lobby({ session, player }) {
                         {isCreator ? (
                             <button
                                 onClick={() => socket.emit('start_game', { code: session.code })}
-                                disabled={session.players.length < 2}
+                                disabled={session.gameType !== 'hangman' && session.players.length < 2}
                                 className="w-full btn-primary disabled:opacity-20 disabled:grayscale disabled:cursor-not-allowed text-lg py-3"
                             >
-                                {session.players.length < 2 ? "En attente de joueurs..." : "COMMENCER"}
+                                {(session.gameType !== 'hangman' && session.players.length < 2) ? "En attente de joueurs..." : "COMMENCER"}
                             </button>
                         ) : (
                             <div className="text-slate-400 font-mono text-xs animate-pulse">
-                                {session.players.length < 2 ? "En attente d'autres joueurs..." : "En attente du chef de salle..."}
+                                {(session.gameType !== 'hangman' && session.players.length < 2) ? "En attente d'autres joueurs..." : "En attente du chef de salle..."}
                             </div>
                         )}
                     </div>

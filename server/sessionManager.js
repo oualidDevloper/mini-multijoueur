@@ -38,10 +38,13 @@ function getSession(code) {
 function joinSession(code, player) {
     const session = getSession(code);
     if (!session) return { error: 'Session introuvable.' };
-    
+
     // Check max players based on game type
-    const maxPlayers = session.gameType === 'rps' ? 6 : 2;
-    
+    let maxPlayers = 2;
+    if (['rps', 'reflex', 'hangman'].includes(session.gameType)) {
+        maxPlayers = 10;
+    }
+
     if (session.players.length >= maxPlayers) {
         return { error: 'Session complète.' };
     }
@@ -57,10 +60,10 @@ function joinSession(code, player) {
         score: 0,
         ready: false
     };
-    
+
     session.players.push(newPlayer);
     session.lastActivity = Date.now();
-    
+
     return { session };
 }
 
@@ -70,7 +73,7 @@ function removePlayer(socketId) {
         if (index !== -1) {
             session.players.splice(index, 1);
             session.lastActivity = Date.now();
-            
+
             // If empty, delete session immediately (or wait for cleanup)
             if (session.players.length === 0) {
                 sessions.delete(code);

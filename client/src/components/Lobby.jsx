@@ -14,8 +14,23 @@ export default function Lobby({ session, player }) {
         return colors[index];
     };
 
+    const getMaxPlayers = () => {
+        if (['rps', 'reflex', 'hangman'].includes(session.gameType)) return 10;
+        return 2;
+    };
+
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen p-4 text-center">
+        <div className="flex flex-col items-center justify-center min-h-screen p-4 text-center relative">
+            <button
+                onClick={() => window.location.reload()}
+                className="absolute top-4 left-4 p-2 text-white/50 hover:text-white transition-colors"
+                title="Retour à l'accueil"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+            </button>
+
             <h1 className="text-2xl font-black mb-6 tracking-tighter text-white/20 uppercase select-none">
                 Lobby
             </h1>
@@ -40,7 +55,7 @@ export default function Lobby({ session, player }) {
                 <div className="bg-black/20 rounded-xl p-4 min-h-[150px] border border-white/5">
                     <div className="flex justify-between items-end mb-4 border-b border-white/5 pb-2">
                         <h3 className="text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Joueurs connectés</h3>
-                        <span className="text-[10px] font-mono text-slate-600">{session.players.length} / {session.gameType === 'rps' ? '6' : '2'}</span>
+                        <span className="text-[10px] font-mono text-slate-600">{session.players.length} / {getMaxPlayers()}</span>
                     </div>
 
                     <ul className="space-y-2">

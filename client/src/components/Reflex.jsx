@@ -37,6 +37,15 @@ export default function Reflex({ session, player }) {
 
     return (
         <div className={`flex flex-col items-center justify-center min-h-screen w-full transition-colors duration-200 ${bgColor} p-4 text-center`}>
+            <button
+                onClick={() => window.location.reload()}
+                className="fixed top-4 left-4 p-2 text-white/50 hover:text-white transition-colors z-50"
+                title="Retour à l'accueil"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+            </button>
 
             {phase !== 'finished' ? (
                 <button

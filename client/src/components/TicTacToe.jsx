@@ -27,6 +27,15 @@ export default function TicTacToe({ session, player }) {
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen p-4">
+            <button
+                onClick={() => window.location.reload()}
+                className="fixed top-4 left-4 p-2 text-white/50 hover:text-white transition-colors z-50"
+                title="Retour à l'accueil"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+            </button>
             <div className="flex justify-between w-full max-w-sm mb-6 text-xl font-bold">
                 <div className={`flex flex-col items-center ${gameState.turnIndex === 0 ? 'text-green-400 scale-110' : 'text-gray-400'}`}>
                     <span>{session.players[0].name} (X)</span>

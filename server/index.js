@@ -106,10 +106,16 @@ io.on('connection', (socket) => {
     // Manual Start
     socket.on('start_game', ({ code }) => {
         const session = getSession(code);
-        if (!session) return;
+        if (!session) {
+            return socket.emit('error', 'Session invalide ou expirée. Veuillez créer une nouvelle partie.');
+        }
+
+        console.log(`Request start_game for ${session.gameType} (Players: ${session.players.length}, Code: ${code})`);
 
         const minPlayers = session.gameType === 'hangman' ? 1 : 2;
-        if (session.players.length < minPlayers) return;
+        if (session.players.length < minPlayers) {
+            return socket.emit('error', `Il faut au moins ${minPlayers} joueur(s) pour démarrer.`);
+        }
 
         session.state = 'playing';
         io.to(session.code).emit('game_start', session);

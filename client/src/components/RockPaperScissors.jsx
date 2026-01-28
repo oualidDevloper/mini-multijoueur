@@ -56,7 +56,7 @@ export default function RockPaperScissors({ session, player }) {
                         <p className="text-sm text-gray-300">Prochaine manche dans quelques secondes...</p>
                         <div className="mt-4 flex gap-4 justify-center">
                             <button onClick={resetGame} className="btn-primary text-sm py-2 px-4">Reset Total</button>
-                            <button onClick={leaveGame} className="btn-secondary text-sm py-2 px-4 bg-gray-600 hover:bg-gray-700">Quitter</button>
+                            <button onClick={leaveGame} className="btn-secondary text-sm py-2 px-4 bg-gray-600 hover:bg-gray-700">Retour à l'accueil</button>
                         </div>
                     </div>
                 ) : (

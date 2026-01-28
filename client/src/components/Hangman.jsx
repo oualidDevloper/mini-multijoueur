@@ -23,17 +23,32 @@ export default function Hangman({ session, player }) {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen p-4">
             {/* Lives / Drawing */}
-            <div className="text-center mb-8">
-                <span className="text-6xl mb-2 block">
-                    {lives === 6 && '😀'}
-                    {lives === 5 && '🙂'}
-                    {lives === 4 && '😐'}
-                    {lives === 3 && '😟'}
-                    {lives === 2 && '😨'}
-                    {lives === 1 && '😱'}
-                    {lives === 0 && '💀'}
-                </span>
-                <p className={`font-bold ${lives < 3 ? 'text-red-500' : 'text-green-400'}`}>
+            {/* Lives / Drawing */}
+            <div className="text-center mb-8 relative h-48 w-48 mx-auto">
+                <svg viewBox="0 0 200 200" className="w-full h-full stroke-white stroke-[4] fill-none">
+                    {/* Gallows */}
+                    <path d="M20 190 L180 190" /> {/* Base */}
+                    <path d="M50 190 L50 20 L120 20 L120 40" /> {/* Pole */}
+
+                    {/* Head */}
+                    {lives < 6 && <circle cx="120" cy="60" r="20" />}
+
+                    {/* Body */}
+                    {lives < 5 && <path d="M120 80 L120 130" />}
+
+                    {/* Left Arm */}
+                    {lives < 4 && <path d="M120 100 L90 130" />}
+
+                    {/* Right Arm */}
+                    {lives < 3 && <path d="M120 100 L150 130" />}
+
+                    {/* Left Leg */}
+                    {lives < 2 && <path d="M120 130 L100 170" />}
+
+                    {/* Right Leg */}
+                    {lives < 1 && <path d="M120 130 L140 170" />}
+                </svg>
+                <p className={`font-bold mt-2 ${lives < 3 ? 'text-red-500' : 'text-green-400'}`}>
                     Vies restantes : {lives}
                 </p>
             </div>
@@ -56,7 +71,7 @@ export default function Hangman({ session, player }) {
                         </h2>
                         <div className="flex gap-4 justify-center">
                             <button onClick={resetGame} className="btn-primary text-sm py-2 px-4">Rejouer</button>
-                            <button onClick={leaveGame} className="btn-secondary text-sm py-2 px-4 bg-gray-600">Quitter</button>
+                            <button onClick={leaveGame} className="btn-secondary text-sm py-2 px-4 bg-gray-600">Retour à l'accueil</button>
                         </div>
                     </div>
                 ) : (

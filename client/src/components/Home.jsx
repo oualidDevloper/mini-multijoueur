@@ -12,13 +12,14 @@ const GAMES = [
 ];
 
 export default function Home({ setSession, setPlayer }) {
-    const [name, setName] = useState('');
+    const [name, setName] = useState(localStorage.getItem('savedPseudo') || '');
     const [joinCode, setJoinCode] = useState('');
     const [error, setError] = useState('');
     const [selectedRule, setSelectedRule] = useState(null);
 
     const createSession = (gameType) => {
         if (!name.trim()) return setError('Choisis un pseudo !');
+        localStorage.setItem('savedPseudo', name);
         socket.emit('create_session', { gameType, playerName: name });
     };
 
@@ -27,6 +28,7 @@ export default function Home({ setSession, setPlayer }) {
         if (!name.trim()) return setError('Choisis un pseudo !');
         if (!joinCode.trim()) return setError('Entre un code de session !');
 
+        localStorage.setItem('savedPseudo', name);
         socket.emit('join_session', { code: joinCode, playerName: name });
     };
 

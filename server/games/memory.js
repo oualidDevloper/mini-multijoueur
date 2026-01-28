@@ -57,15 +57,8 @@ function makeMove(session, playerIndex, cardIndex) {
             // BUT backend should handle state. 
             // We'll leave them flipped in state, and depend on a "reset_turn" triggered by frontend or timeout?
             // Safer: Backend timeout.
-            setTimeout(() => {
-                c1.flipped = false;
-                c2.flipped = false;
-                gameState.flippedIndices = [];
-                gameState.turnIndex = (gameState.turnIndex + 1) % 2;
-                // Need to emit update! This requires passing 'io' or using bad pattern.
-                // For now, we'll return a flag to index.js to handle the timeout/emit.
-            }, 0);
-            // Actually, `makeMove` returns to `index.js`, so we can tell index.js to set a timeout.
+            // No Match - Wait for next action to flip back.
+            // We return a specific status to index.js to handle the delay and state update.
             return { success: true, delayedSwitch: true };
         }
     }

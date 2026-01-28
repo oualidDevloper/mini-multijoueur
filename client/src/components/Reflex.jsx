@@ -63,7 +63,7 @@ export default function Reflex({ session, player }) {
 
                     <div className="flex gap-4 justify-center">
                         <button onClick={resetGame} className="btn-primary text-sm py-2 px-4">Rejouer</button>
-                        <button onClick={leaveGame} className="btn-secondary text-sm py-2 px-4 bg-gray-600">Quitter</button>
+                        <button onClick={leaveGame} className="btn-secondary text-sm py-2 px-4 bg-gray-600">Retour à l'accueil</button>
                     </div>
                 </div>
             )}

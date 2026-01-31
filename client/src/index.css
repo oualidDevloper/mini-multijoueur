@@ -25,8 +25,8 @@
 
 #root {
   overflow-y: auto;
-  /* Reserve space for the fixed ad (100px) */
-  height: calc(100vh - 100px);
+  /* Reserve space for the fixed ad (90px) */
+  height: calc(100vh - 90px);
   display: flex;
   flex-direction: column;
 }

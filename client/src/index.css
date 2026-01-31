@@ -78,7 +78,7 @@
 }
 
 /* Show ads and adjust root layout on large screens */
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
 
   .side-ad-left,
   .side-ad-right {
@@ -88,14 +88,14 @@
   }
 
   #root {
-    margin-left: 200px;
-    /* Increased from 170px to clear 160px ads + 20px gap */
-    margin-right: 200px;
-    width: calc(100% - 400px);
+    margin-left: 250px;
+    /* Significant gap to avoid any overlap */
+    margin-right: 250px;
+    width: calc(100% - 500px);
   }
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1500px) {
   .bottom-ad-secondary {
     display: flex;
     align-items: center;
@@ -104,9 +104,9 @@
 
   /* Extra margin for the 300px wide bottom-right banner */
   #root {
-    margin-right: 340px;
-    /* 300px width + 20px gap + 20px safety */
-    width: calc(100% - 540px);
+    margin-right: 400px;
+    /* 300px width + large safety gap */
+    width: calc(100% - 650px);
   }
 }
 

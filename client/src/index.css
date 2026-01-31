@@ -60,8 +60,8 @@
   height: 300px;
 }
 
-/* Show ads and adjust root layout on medium and large screens */
-@media (min-width: 768px) {
+/* Show ads and adjust root layout on large screens */
+@media (min-width: 1100px) {
 
   .side-ad-left,
   .side-ad-right {
@@ -71,9 +71,9 @@
   }
 
   #root {
-    margin-left: 170px;
-    margin-right: 170px;
-    width: calc(100% - 340px);
+    margin-left: 180px;
+    margin-right: 180px;
+    width: calc(100% - 360px);
   }
 }
 

@@ -61,7 +61,7 @@
 }
 
 /* Show ads and adjust root layout on large screens */
-@media (min-width: 1400px) {
+@media (min-width: 1200px) {
 
   .side-ad-left,
   .side-ad-right {
@@ -71,9 +71,9 @@
   }
 
   #root {
-    margin-left: 200px;
-    margin-right: 200px;
-    width: calc(100% - 400px);
+    margin-left: 180px;
+    margin-right: 180px;
+    width: calc(100% - 360px);
   }
 }
 

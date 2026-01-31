@@ -88,22 +88,31 @@
   }
 
   #root {
-    margin-left: 170px;
-    margin-right: 170px;
-    width: calc(100% - 340px);
+    margin-left: 200px;
+    /* Increased from 170px to clear 160px ads + 20px gap */
+    margin-right: 200px;
+    width: calc(100% - 400px);
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   .bottom-ad-secondary {
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
+  /* Extra margin for the 300px wide bottom-right banner */
+  #root {
+    margin-right: 340px;
+    /* 300px width + 20px gap + 20px safety */
+    width: calc(100% - 540px);
+  }
 }
 
 .side-ad-left iframe,
-.side-ad-right iframe {
+.side-ad-right iframe,
+.bottom-ad-secondary iframe {
   border-radius: 8px;
 }
 

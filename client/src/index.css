@@ -60,6 +60,23 @@
   height: 300px;
 }
 
+.bottom-ad-secondary {
+  position: fixed;
+  bottom: 100px;
+  /* Position it above the bottom banner */
+  right: 20px;
+  width: 300px;
+  height: 250px;
+  z-index: 1000;
+  display: none;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
 /* Show ads and adjust root layout on large screens */
 @media (min-width: 900px) {
 
@@ -74,6 +91,14 @@
     margin-left: 170px;
     margin-right: 170px;
     width: calc(100% - 340px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .bottom-ad-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 

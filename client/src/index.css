@@ -25,7 +25,8 @@
 
 #root {
   overflow-y: auto;
-  height: 100vh;
+  /* Reserve space for the discrete banner (90px) */
+  height: calc(100vh - 90px);
   display: flex;
   flex-direction: column;
 }

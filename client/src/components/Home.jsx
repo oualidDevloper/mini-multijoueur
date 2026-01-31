@@ -33,7 +33,7 @@ export default function Home({ setSession, setPlayer }) {
     };
 
     return (
-        <div className="flex flex-col items-center min-h-screen p-4 pb-52 relative overflow-hidden">
+        <div className="flex flex-col items-center min-h-screen p-4 pb-12 relative overflow-hidden">
             {/* Background Decor */}
             <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 rounded-full blur-[120px] pointer-events-none"></div>
             <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/20 rounded-full blur-[120px] pointer-events-none"></div>

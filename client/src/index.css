@@ -20,8 +20,9 @@
     font-family: var(--font-sans);
     min-height: 100vh;
     overflow-x: hidden;
-    padding-bottom: 200px;
-    /* Space for fixed bottom ads */
+    padding-bottom: 0;
+    display: grid;
+    grid-template-rows: 1fr auto;
   }
 }
 

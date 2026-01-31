@@ -20,6 +20,8 @@
     font-family: var(--font-sans);
     min-height: 100vh;
     overflow-x: hidden;
+    padding-bottom: 200px;
+    /* Space for fixed bottom ads */
   }
 }
 

@@ -20,7 +20,7 @@ export default function Lobby({ session, player }) {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen p-4 text-center relative">
+        <div className="flex flex-col items-center justify-center h-full p-4 text-center relative overflow-y-auto">
             <button
                 onClick={() => window.location.reload()}
                 className="absolute top-4 left-4 p-2 text-white/50 hover:text-white transition-colors"

@@ -20,7 +20,7 @@ export default function Memory({ session, player }) {
     const leaveGame = () => window.location.reload();
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen p-4">
+        <div className="flex flex-col items-center justify-center h-full p-4">
             <button
                 onClick={() => window.location.reload()}
                 className="fixed top-4 left-4 p-2 text-white/50 hover:text-white transition-colors z-50"

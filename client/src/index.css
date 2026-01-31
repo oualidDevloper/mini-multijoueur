@@ -23,7 +23,19 @@
     padding-bottom: 0;
     display: grid;
     grid-template-rows: 1fr auto;
+    height: 100vh;
+    /* Force full height */
+    overflow: hidden;
+    /* Disable page scroll */
   }
+}
+
+#root {
+  overflow-y: auto;
+  /* Allow app to scroll internally if needed */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 @layer components {

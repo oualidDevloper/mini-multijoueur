@@ -12,6 +12,22 @@
 </head>
 
 <body>
+  <!-- Header Banner (468x60) -->
+  <div id="header-ad-container"
+    style="position: fixed; top: 0; left: 50%; transform: translateX(-50%); z-index: 9999; text-align: center; height: 60px; display: none; align-items: center; justify-content: center; background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); width: auto; min-width: 468px; border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; overflow: hidden;">
+    <iframe
+      srcdoc="<style>body{margin:0;display:flex;justify-content:center;align-items:center;height:60px;overflow:hidden;}</style><body><script type='text/javascript'>atOptions={'key':'48f44a0d1607774c8272b2b1a5056f7e','format':'iframe','height':60,'width':468,'params':{}};</script><script type='text/javascript' src='https://www.highperformanceformat.com/48f44a0d1607774c8272b2b1a5056f7e/invoke.js'></script></body>"
+      width="468" height="60" frameborder="0" scrolling="no" style="border:none;"></iframe>
+  </div>
+
+  <!-- Top Left Banner (320x50) -->
+  <div id="top-left-ad"
+    style="position: fixed; top: 10px; left: 20px; z-index: 9999; display: none; background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 8px; overflow: hidden;">
+    <iframe
+      srcdoc="<style>body{margin:0;display:flex;justify-content:center;align-items:center;height:50px;overflow:hidden;}</style><body><script type='text/javascript'>atOptions={'key':'33a274366ae6d7fd0407a8667854ecf3','format':'iframe','height':50,'width':320,'params':{}};</script><script type='text/javascript' src='https://www.highperformanceformat.com/33a274366ae6d7fd0407a8667854ecf3/invoke.js'></script></body>"
+      width="320" height="50" frameborder="0" scrolling="no" style="border:none;"></iframe>
+  </div>
+
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
   <div id="footer-ad-container"

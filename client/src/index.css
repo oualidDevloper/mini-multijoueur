@@ -79,6 +79,9 @@
 
 /* Show ads and adjust root layout on large screens */
 @media (min-width: 1024px) {
+  #header-ad-container {
+    display: flex;
+  }
 
   .side-ad-left,
   .side-ad-right {
@@ -92,6 +95,14 @@
     /* Significant gap to avoid any overlap */
     margin-right: 250px;
     width: calc(100% - 500px);
+    padding-top: 70px;
+    /* Space for header ad */
+  }
+}
+
+@media (min-width: 1300px) {
+  #top-left-ad {
+    display: block;
   }
 }
 
@@ -112,7 +123,9 @@
 
 .side-ad-left iframe,
 .side-ad-right iframe,
-.bottom-ad-secondary iframe {
+.bottom-ad-secondary iframe,
+#header-ad-container iframe,
+#top-left-ad iframe {
   border-radius: 8px;
 }
 

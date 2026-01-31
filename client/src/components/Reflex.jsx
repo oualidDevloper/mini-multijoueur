@@ -36,7 +36,7 @@ export default function Reflex({ session, player }) {
     }
 
     return (
-        <div className={`flex flex-col items-center justify-center min-h-screen w-full transition-colors duration-200 ${bgColor} p-4 text-center`}>
+        <div className={`flex flex-col items-center justify-center min-h-screen w-full transition-colors duration-200 ${bgColor} p-4 pb-52 text-center`}>
             <button
                 onClick={() => window.location.reload()}
                 className="fixed top-4 left-4 p-2 text-white/50 hover:text-white transition-colors z-50"

@@ -61,7 +61,7 @@
 }
 
 /* Show ads and adjust root layout on large screens */
-@media (min-width: 1100px) {
+@media (min-width: 900px) {
 
   .side-ad-left,
   .side-ad-right {
@@ -71,10 +71,15 @@
   }
 
   #root {
-    margin-left: 180px;
-    margin-right: 180px;
-    width: calc(100% - 360px);
+    margin-left: 170px;
+    margin-right: 170px;
+    width: calc(100% - 340px);
   }
+}
+
+.side-ad-left iframe,
+.side-ad-right iframe {
+  border-radius: 8px;
 }
 
 @layer components {

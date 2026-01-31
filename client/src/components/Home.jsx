@@ -38,31 +38,31 @@ export default function Home({ setSession, setPlayer }) {
             <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 rounded-full blur-[120px] pointer-events-none"></div>
             <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/20 rounded-full blur-[120px] pointer-events-none"></div>
 
-            <h1 className="text-6xl md:text-8xl font-black mb-12 mt-8 tracking-tighter drop-shadow-[0_0_25px_rgba(255,255,255,0.2)] text-center relative z-10">
+            <h1 className="text-4xl md:text-6xl font-black mb-6 mt-4 tracking-tighter drop-shadow-[0_0_25px_rgba(255,255,255,0.2)] text-center relative z-10">
                 PLAY BY <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary animate-pulse">CODE</span>
             </h1>
 
-            <div className="w-full max-w-6xl space-y-12 fade-in relative z-10">
+            <div className="w-full max-w-6xl space-y-8 fade-in relative z-10">
 
                 {/* User Input Section */}
-                <div className="card w-full max-w-lg mx-auto border-t border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
-                    <div className="mb-6">
-                        <label className="block text-xs font-bold mb-2 ml-1 text-secondary tracking-widest uppercase">Ton Pseudo</label>
+                <div className="card w-full max-w-lg mx-auto border-t border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)] p-4 sm:p-6 mb-2">
+                    <div className="mb-4">
+                        <label className="block text-xs font-bold mb-1 ml-1 text-secondary tracking-widest uppercase">Ton Pseudo</label>
                         <input
                             type="text"
                             value={name}
                             onChange={(e) => { setName(e.target.value); setError(''); }}
                             placeholder="Entrez votre nom..."
-                            className="input-field text-lg"
+                            className="input-field py-2 px-4"
                         />
                     </div>
-                    {error && <div className="bg-red-500/10 border border-red-500/50 text-red-200 text-sm font-bold p-3 rounded-lg mb-4 flex items-center gap-2">⚠️ {error}</div>}
+                    {error && <div className="bg-red-500/10 border border-red-500/50 text-red-200 text-[10px] font-bold p-2 rounded-lg mb-4 flex items-center gap-2">⚠️ {error}</div>}
 
                     <div className="relative">
-                        <div className="absolute inset-0 flex items-center mb-6">
+                        <div className="absolute inset-0 flex items-center mb-4">
                             <div className="w-full border-t border-white/5"></div>
                         </div>
-                        <div className="relative flex justify-center text-sm mb-6">
+                        <div className="relative flex justify-center text-[10px] mb-4">
                             <span className="px-4 bg-slate-900 text-slate-500 font-mono uppercase">Rejoindre une session</span>
                         </div>
                     </div>
@@ -73,10 +73,10 @@ export default function Home({ setSession, setPlayer }) {
                             value={joinCode}
                             onChange={(e) => setJoinCode(e.target.value.toUpperCase())}
                             placeholder="CODE"
-                            className="input-field text-center uppercase tracking-[0.2em] font-mono font-bold text-2xl flex-1 border-secondary/30 focus:border-secondary"
+                            className="input-field text-center uppercase tracking-[0.2em] font-mono font-bold text-xl py-2 flex-1 border-secondary/30 focus:border-secondary"
                             maxLength={6}
                         />
-                        <button type="submit" className="bg-secondary/20 hover:bg-secondary/30 text-secondary border border-secondary/50 font-bold px-8 rounded-xl transition-all hover:shadow-[0_0_20px_rgba(6,182,212,0.3)]">
+                        <button type="submit" className="bg-secondary/20 hover:bg-secondary/30 text-secondary border border-secondary/50 font-bold px-6 py-2 rounded-xl transition-all hover:shadow-[0_0_20px_rgba(6,182,212,0.3)]">
                             GO
                         </button>
                     </form>
@@ -84,28 +84,28 @@ export default function Home({ setSession, setPlayer }) {
 
                 {/* Games Grid */}
                 <div>
-                    <h2 className="text-center text-slate-400 text-sm font-bold tracking-[0.2em] uppercase mb-8">Sélectionnez un jeu</h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+                    <h2 className="text-center text-slate-400 text-xs font-bold tracking-[0.2em] uppercase mb-4">Sélectionnez un jeu</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-4 pb-4">
                         {GAMES.map((game) => (
                             <div key={game.id} className="group relative">
                                 <div className={`absolute inset-0 bg-gradient-to-br ${game.color} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition duration-500`}></div>
-                                <div className="relative h-full bg-slate-900/80 border border-white/5 group-hover:border-white/20 rounded-2xl p-6 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-2xl overflow-hidden flex flex-col items-center text-center backdrop-blur-sm">
-                                    <div className="text-7xl mb-6 group-hover:scale-110 transition-transform duration-300 drop-shadow-md filter grayscale group-hover:grayscale-0">
+                                <div className="relative h-full bg-slate-900/80 border border-white/5 group-hover:border-white/20 rounded-2xl p-4 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-2xl overflow-hidden flex flex-col items-center text-center backdrop-blur-sm">
+                                    <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300 drop-shadow-md filter grayscale group-hover:grayscale-0">
                                         {game.icon}
                                     </div>
-                                    <h3 className="text-2xl font-bold mb-1 tracking-tight">{game.name}</h3>
-                                    <p className="text-xs text-slate-500 uppercase tracking-widest mb-6">{game.minPlayers} Joueurs min</p>
+                                    <h3 className="text-xl font-bold mb-1 tracking-tight">{game.name}</h3>
+                                    <p className="text-[10px] text-slate-500 uppercase tracking-widest mb-4">{game.minPlayers} Joueurs min</p>
 
-                                    <div className="mt-auto flex gap-3 w-full opacity-80 group-hover:opacity-100 transition-opacity">
+                                    <div className="mt-auto flex gap-2 w-full opacity-80 group-hover:opacity-100 transition-opacity">
                                         <button
                                             onClick={() => createSession(game.id)}
-                                            className={`flex-1 bg-gradient-to-r ${game.color} text-white font-bold py-3 rounded-lg shadow-lg hover:brightness-110 transition active:scale-95`}
+                                            className={`flex-1 bg-gradient-to-r ${game.color} text-white font-bold py-2 rounded-lg shadow-lg hover:brightness-110 transition active:scale-95 text-sm`}
                                         >
                                             CRÉER
                                         </button>
                                         <button
                                             onClick={() => setSelectedRule(game.id)}
-                                            className="w-12 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg flex items-center justify-center text-lg text-slate-300 font-serif italic"
+                                            className="w-10 h-10 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg flex items-center justify-center text-base text-slate-300 font-serif italic"
                                             title="Règles"
                                         >
                                             i

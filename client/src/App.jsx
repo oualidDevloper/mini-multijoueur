@@ -18,38 +18,49 @@ function App() {
   useEffect(() => {
     // Socket Events
     socket.on('connect', () => {
-      console.log('Connected');
+      console.log('Connected to server with ID:', socket.id);
       setLoading(false);
     });
 
-    const handleSessionUpdate = (updatedSession) => {
-      setSession(updatedSession);
-      if (player) {
-        const me = updatedSession.players.find(p => p.id === player.id);
-        if (me) setPlayer(me);
-      }
-    };
-
     socket.on('session_created', ({ code, playerId, session }) => {
+      console.log('Session created:', code);
       setSession(session);
       const p = session.players.find(p => p.id === playerId);
-      setPlayer(p);
+      if (p) {
+        setPlayer(p);
+      } else {
+        console.error('Creator not found in session players!');
+      }
     });
 
     socket.on('session_joined', ({ code, playerId, session }) => {
+      console.log('Joined session:', code);
       setSession(session);
       const p = session.players.find(p => p.id === playerId);
-      setPlayer(p);
+      if (p) setPlayer(p);
     });
 
-    socket.on('session_update', handleSessionUpdate);
+    const handleUpdate = (updatedSession) => {
+      setSession(updatedSession);
+      // We use a functional update here to avoid dependency on the 'player' variable
+      setPlayer(currentPlayer => {
+        if (!currentPlayer) return null;
+        const me = updatedSession.players.find(p => p.id === currentPlayer.id);
+        return me || currentPlayer;
+      });
+    };
+
+    socket.on('session_update', handleUpdate);
     socket.on('game_start', (s) => setSession(s));
     socket.on('game_update', (s) => setSession(s));
     socket.on('round_result', (s) => setSession(s));
     socket.on('game_reset', (s) => setSession(s));
 
     socket.on('player_left', (socketId) => console.log('Player left:', socketId));
-    socket.on('error', (msg) => alert(msg));
+    socket.on('error', (msg) => {
+      console.error('Socket error:', msg);
+      alert(msg);
+    });
 
     return () => {
       socket.off('connect');
@@ -63,7 +74,7 @@ function App() {
       socket.off('player_left');
       socket.off('error');
     };
-  }, [player]);
+  }, []); // Empty dependency array means this runs once on mount
 
   // View Logic
   // 1. Loading

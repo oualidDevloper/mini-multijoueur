@@ -16,11 +16,25 @@ export default function Home({ setSession, setPlayer }) {
     const [joinCode, setJoinCode] = useState('');
     const [error, setError] = useState('');
     const [selectedRule, setSelectedRule] = useState(null);
+    const [isCreating, setIsCreating] = useState(false);
 
     const createSession = (gameType) => {
+        console.log('Attempting to create session for:', gameType);
         if (!name.trim()) return setError('Choisis un pseudo !');
+
+        if (!socket.connected) {
+            console.warn('Socket not connected! Attempting to connect...');
+            setError('Connexion au serveur en cours... Réessaie dans un instant.');
+            socket.connect();
+            return;
+        }
+
+        setIsCreating(true);
         localStorage.setItem('savedPseudo', name);
         socket.emit('create_session', { gameType, playerName: name });
+
+        // Safety timeout to reset loading state if no response
+        setTimeout(() => setIsCreating(false), 5000);
     };
 
     const joinSession = (e) => {
@@ -99,9 +113,10 @@ export default function Home({ setSession, setPlayer }) {
                                     <div className="mt-auto flex gap-1.5 w-full">
                                         <button
                                             onClick={() => createSession(game.id)}
-                                            className={`flex-1 bg-gradient-to-r ${game.color} text-white font-bold py-1.5 rounded-md shadow-md hover:brightness-110 transition active:scale-95 text-[11px]`}
+                                            disabled={isCreating}
+                                            className={`flex-1 bg-gradient-to-r ${game.color} text-white font-bold py-1.5 rounded-md shadow-md hover:brightness-110 transition active:scale-95 text-[11px] disabled:opacity-50 disabled:cursor-wait`}
                                         >
-                                            CRÉER
+                                            {isCreating ? '...' : 'CRÉER'}
                                         </button>
                                         <button
                                             onClick={() => setSelectedRule(game.id)}

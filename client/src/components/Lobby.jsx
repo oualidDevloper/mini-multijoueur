@@ -5,6 +5,8 @@ export default function Lobby({ session, player }) {
         navigator.clipboard.writeText(session.code);
     };
 
+    if (!player) return <div className="text-white">Chargement du joueur...</div>;
+
     const isCreator = session.players[0]?.id === player.id;
 
     // Helper to generate consistent avatar color from name
